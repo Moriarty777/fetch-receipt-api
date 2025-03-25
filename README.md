@@ -2,43 +2,62 @@
 
 This is a backend receipt API for the Fetch assessment test. It processes receipt data and calculates reward points based on specific rules.
 
-## Running the Application with Docker
+### How to Build and Run the Docker Image
 
-To build the Docker image from the `Dockerfile` in this repository, run:
+1. Clone the repository:
 
-```
-docker build -t fetch-receipt-api .
-```
+    ```bash
+    git clone <repo-url>
+    ```
 
-Once the image is built, start the container with:
+2. Change to the project directory:
 
-```
-docker run -p 3000:3000 fetch-receipt-api
-```
+    ```bash
+    cd fetch-receipt-api
+    ```
 
-This will run the API on port 3000.
+3. Build the Docker image:
 
-# Example API Usage
+    ```bash
+    docker build -t fetch-receipt-api .
+    ```
 
-You can test the API using curl.
+4. Run the Docker container:
 
-## Process a Receipt
+    ```bash
+    docker run -p 3000:3000 fetch-receipt-api
+    ```
 
-```
+This will start the API server and make it accessible on `http://localhost:3000`.
+
+### Example API Call Using cURL:
+
+To test the API, you can use the following `curl` command:
+
+```bash
 curl -X POST http://localhost:3000/receipts/process \
  -H "Content-Type: application/json" \
  -d '{
-   "retailer": "M&M Corner Market",
-   "purchaseDate": "2022-03-20",
-   "purchaseTime": "14:33",
-   "items": [
-     {"shortDescription": "Gatorade", "price": "2.25"},
-     {"shortDescription": "Gatorade", "price": "2.25"},
-     {"shortDescription": "Gatorade", "price": "2.25"},
-     {"shortDescription": "Gatorade", "price": "2.25"}
-   ],
-   "total": "9.00"
- }'
+"retailer": "M&M Corner Market",
+"purchaseDate": "2022-03-20",
+"purchaseTime": "14:33",
+"items": [
+{
+"shortDescription": "Gatorade",
+"price": "2.25"
+},{
+"shortDescription": "Gatorade",
+"price": "2.25"
+},{
+"shortDescription": "Gatorade",
+"price": "2.25"
+},{
+"shortDescription": "Gatorade",
+"price": "2.25"
+}
+],
+"total": "9.00"
+}'
 ```
 
 This will return a JSON response with an id for the processed receipt.
