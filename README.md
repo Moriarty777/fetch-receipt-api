@@ -2,6 +2,8 @@
 
 This is a backend receipt API for the Fetch assessment test. It processes receipt data and calculates reward points based on specific rules.
 
+Link: https://github.com/fetch-rewards/receipt-processor-challenge/tree/main
+
 ### How to Build and Run the Docker Image
 
 1. Clone the repository:
